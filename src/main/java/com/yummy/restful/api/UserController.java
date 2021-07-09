@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/api/user",produces = {MediaType.APPLICATION_JSON_VALUE})
 public class UserController {
+
     private final UserServiceImpl userServiceImpl;
 
     @Autowired
@@ -34,5 +35,4 @@ public class UserController {
     public ResponseEntity<?> authorization(@RequestBody UserRequestAuthorizationDTO user) {
         return null;
     }
-
 }

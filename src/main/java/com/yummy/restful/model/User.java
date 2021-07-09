@@ -1,11 +1,17 @@
 package com.yummy.restful.model;
 
 import com.yummy.restful.model.enums.UserStatus;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "usr")
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -28,52 +34,4 @@ public class User {
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "status")
     private UserStatus status;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public UserStatus getStatus() {
-        return status;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setStatus(UserStatus status) {
-        this.status = status;
-    }
 }
