@@ -9,9 +9,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDTO {
+    private Long id;
     private String name;
     private String description;
     private Double price_1;
     private Double price_2;
     private ProductType productType;
+    private String image;
 }

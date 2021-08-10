@@ -4,11 +4,12 @@ import com.yummy.restful.dto.general.ProductDTO;
 import com.yummy.restful.model.Product;
 import com.yummy.restful.repository.ProductRepository;
 import com.yummy.restful.serveces.ProductService;
-
 import com.yummy.restful.util.mappers.ProductMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,12 +29,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAll() {
-        return productRepository.findAll();
+    public List<ProductDTO> getAll() {
+        List<Product> products = productRepository.findAll();
+        List<ProductDTO> productsDTO = new ArrayList<>();
+        for(Product product : products) {
+            ProductDTO productDTO = ProductMapper.INSTANCE.toProductDTO(product);
+            productsDTO.add(productDTO);
+        }
+        return productsDTO;
     }
 
     @Override
-    public Product findById(Long id) {
-        return productRepository.findById(id).orElse(null);
+    public ProductDTO findById(Long id) {
+        final Product product = productRepository.findById(id).orElse(null);
+        return ProductMapper.INSTANCE.toProductDTO(product);
     }
 }

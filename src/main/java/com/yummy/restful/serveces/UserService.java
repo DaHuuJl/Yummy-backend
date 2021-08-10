@@ -6,5 +6,4 @@ import com.yummy.restful.model.User;
 public interface UserService {
 
     boolean registration(UserRequestRegistrationDTO userDTO);
-    User findByUsername(String username);
 }

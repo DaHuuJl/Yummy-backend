@@ -1,17 +1,13 @@
 package com.yummy.restful.api;
 
 import com.yummy.restful.dto.general.ProductDTO;
-import com.yummy.restful.model.Product;
 import com.yummy.restful.serveces.impl.ProductServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,10 +30,18 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/getAll", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Product>> getAll() {
-        final List<Product> productList = productServiceImpl.getAll();
+    public ResponseEntity<List<ProductDTO>> getAll() {
+        final List<ProductDTO> productList = productServiceImpl.getAll();
         return productList != null
                 ? new ResponseEntity<>(productList, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(value = "/findById/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ProductDTO> findById(@PathVariable Long id) {
+        final ProductDTO productDTO = productServiceImpl.findById(id);
+        return productDTO != null
+                ? new ResponseEntity<>( HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

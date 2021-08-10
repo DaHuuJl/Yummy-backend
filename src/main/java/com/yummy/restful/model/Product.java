@@ -1,12 +1,13 @@
 package com.yummy.restful.model;
 
 import com.yummy.restful.model.enums.ProductType;
+import com.yummy.restful.repository.OrderRepository;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -35,4 +36,10 @@ public class Product {
     @Enumerated(EnumType.STRING)
     @Column(name = "type")
     private ProductType productType;
+
+    @Column(name = "image")
+    private String image;
+
+    @OneToMany(mappedBy ="product",  fetch = FetchType.LAZY)
+    List<OrderDetails> orderDetailsList;
 }

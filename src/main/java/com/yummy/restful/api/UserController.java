@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/user",produces = {MediaType.APPLICATION_JSON_VALUE})
+@RequestMapping(value = "/api/user",produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
 
     private final UserServiceImpl userServiceImpl;
@@ -26,9 +26,10 @@ public class UserController {
     //APPLICATION_JSON_UTF8_VALUE
     @RequestMapping(value = "/registration", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> registration(@RequestBody UserRequestRegistrationDTO user) {
-        return userServiceImpl.registration(user)
+        return null;
+        /*userServiceImpl.registration(user)
                 ? new ResponseEntity(HttpStatus.OK)
-                : new ResponseEntity(HttpStatus.NOT_FOUND);
+                : new ResponseEntity(HttpStatus.NOT_FOUND);*/
     }
 
     @RequestMapping(value = "/authorization", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
