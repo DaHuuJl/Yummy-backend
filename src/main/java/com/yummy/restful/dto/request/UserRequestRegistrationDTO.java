@@ -9,8 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserRequestRegistrationDTO {
-    private String username;
-    private String password;
     private String fullName;
     private String phoneNumber;
+    private String password;
 }

@@ -3,8 +3,8 @@ package com.yummy.restful.api;
 import com.yummy.restful.dto.request.UserRequestAuthorizationDTO;
 import com.yummy.restful.dto.request.UserRequestRegistrationDTO;
 import com.yummy.restful.serveces.impl.UserServiceImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;

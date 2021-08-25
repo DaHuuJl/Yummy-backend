@@ -19,8 +19,11 @@ public class Order {
     @Column(name = "order_id")
     private Long id;
 
+    @Column(name = "price")
+    private double price;
+
     @OneToMany(mappedBy ="order",  fetch = FetchType.LAZY)
-    List<OrderDetails> orderDetailsList;
+    private List<OrderDetails> orderDetailsList;
 
     @ManyToOne
     @JoinColumn(name = "usr", nullable = false)

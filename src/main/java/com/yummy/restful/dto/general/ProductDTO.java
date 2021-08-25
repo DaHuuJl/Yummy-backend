@@ -1,6 +1,7 @@
 package com.yummy.restful.dto.general;
 
 import com.yummy.restful.model.enums.ProductType;
+
 import lombok.*;
 
 @Getter
