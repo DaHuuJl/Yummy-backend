@@ -1,9 +1,11 @@
 package com.yummy.restful.serveces;
 
+import com.yummy.restful.dto.request.UserRequestAuthorizationDTO;
 import com.yummy.restful.dto.request.UserRequestRegistrationDTO;
-import com.yummy.restful.model.User;
+import com.yummy.restful.dto.response.UserResponseAuthorizationDTO;
 
 public interface UserService {
 
-    boolean registration(UserRequestRegistrationDTO userDTO);
+    UserResponseAuthorizationDTO login (UserRequestAuthorizationDTO user);
+    UserResponseAuthorizationDTO registration(UserRequestRegistrationDTO userDTO);
 }

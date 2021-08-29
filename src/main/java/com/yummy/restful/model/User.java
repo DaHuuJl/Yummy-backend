@@ -39,4 +39,10 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy ="user",  fetch = FetchType.EAGER)
     private List<Order> orders;
+
+    public User(String password, String fullName, String phoneNumber) {
+        this.password = password;
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+    }
 }

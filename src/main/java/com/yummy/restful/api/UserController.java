@@ -2,9 +2,12 @@ package com.yummy.restful.api;
 
 import com.yummy.restful.dto.request.UserRequestAuthorizationDTO;
 import com.yummy.restful.dto.request.UserRequestRegistrationDTO;
+import com.yummy.restful.dto.response.UserResponseAuthorizationDTO;
 import com.yummy.restful.serveces.impl.UserServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,15 +28,20 @@ public class UserController {
 
     //APPLICATION_JSON_UTF8_VALUE
     @RequestMapping(value = "/registration", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> registration(@RequestBody UserRequestRegistrationDTO user) {
-        return null;
-        /*userServiceImpl.registration(user)
-                ? new ResponseEntity(HttpStatus.OK)
-                : new ResponseEntity(HttpStatus.NOT_FOUND);*/
+    public ResponseEntity<UserResponseAuthorizationDTO> registration(@RequestBody UserRequestRegistrationDTO user) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        UserResponseAuthorizationDTO token = userServiceImpl.registration(user);
+        responseHeaders.add("token", String.valueOf(token));
+        return token != null
+                ? new ResponseEntity<>(token, HttpStatus.CREATED)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(value = "/authorization", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> authorization(@RequestBody UserRequestAuthorizationDTO user) {
-        return null;
+    public ResponseEntity<UserResponseAuthorizationDTO> authorization(@RequestBody UserRequestAuthorizationDTO user) {
+        UserResponseAuthorizationDTO token = userServiceImpl.login(user);
+        return token != null
+                ? new ResponseEntity<>(token, HttpStatus.CREATED)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

@@ -12,7 +12,7 @@ public interface ProductMapperForOrder {
     ProductMapperForOrder INSTANCE = Mappers.getMapper(ProductMapperForOrder.class);
 
     @Mappings({
-            @Mapping(source = "id", target = "id")
+            //@Mapping(source = "id", target = "id")
     })
     Product toProduct(ProductDTOForOrder productDTOForOrder);
 
