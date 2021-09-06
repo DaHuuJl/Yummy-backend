@@ -32,6 +32,9 @@ public class User {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Column(name = "img")
+    private String image;
+
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "status")
     private UserStatus status;
