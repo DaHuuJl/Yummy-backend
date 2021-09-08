@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/user",produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/api/user",produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
 
     private final UserServiceImpl userServiceImpl;
